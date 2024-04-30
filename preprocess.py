@@ -79,5 +79,18 @@ def process_video_frames(video_path, output_folder):
                         zipf.write(file_path, os.path.relpath(file_path, folder_path))
     print("finished")
 
+
+def process_single_image(image_path, output_folder):
+    # Create output folder if it doesn't exist
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    for i in range(24):
+        cropped_image, x, y = random_crop(frame_pil)
+        folder_name = os.path.join(output_folder, f"frame_{frame_count}")
+        os.makedirs(folder_name, exist_ok=True)
+        cropped_image.save(os.path.join(folder_name, f"crop_{i}_{x}_{y}.jpg"))
+
 # Example usage
 process_video_frames(video_path, output_folder)
+
+process_single_image(image_path,output_folder)
