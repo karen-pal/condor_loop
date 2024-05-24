@@ -14,7 +14,7 @@ Made with AMOR using python, by Karen Palacio.
 - video_player: video player class that uses mpv
 
 # Dependencies
-pip install mpv-python 
+pip install mpv-python pyautogui
 
 
 # Usage
