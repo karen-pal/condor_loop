@@ -9,4 +9,3 @@ etc
 
 python3 other_play.py
 
-cabrones.
