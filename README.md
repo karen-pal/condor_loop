@@ -1,12 +1,14 @@
 Laura, Say hello to my little video looper
 
 
+<img src="idea.jpg">
 <img src="screen.png">
 
 
 Made with AMOR using python, by Karen Palacio.
 
 > For a very custom type of video.
+> a video made of videos.
 
 # Contents
 
