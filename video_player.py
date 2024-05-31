@@ -6,41 +6,37 @@ from threading import Timer
 import time
 
 DEBUG=False
-class VideoPlayer():
-    def __init__(self, directory_path="./", videofile_pattern="crop_", video_format=".mp4"):
-        self.directory_path = directory_path
-        self.videofile_pattern = videofile_pattern
-        self.video_format = video_format
-        self.video_files = []
 
-    def get_videos_from_path(self):
-        self.video_files = [f for f in os.listdir(self.directory_path) if f.endswith(self.video_format) and f.startswith(self.videofile_pattern)]
+class VideoPlayer():
+    def __init__(self, *, video_collage ) : #directory_path="./", videofile_pattern="crop_", video_format=".mp4"):
+        self.video_collage = video_collage
 
     def play(self):
         video_processes = []
         mpv_players = []
-
-        self.get_videos_from_path()
-
 
         try:
             pyautogui.FAILSAFE = False
 
             # Get screen size
             screen_width, screen_height = pyautogui.size()
-
-            for i,video_file in enumerate(self.video_files):
-                filename = os.path.join(self.directory_path, video_file)
-                x_y = filename.split('_')[2:4]
-                print(x_y)
+            print(self.video_collage.video_files)
+            for i,video_file in enumerate(self.video_collage.video_files):
+                full_path = os.path.join(self.video_collage.directory_path, video_file)
+                print(full_path)
+                x_y = video_file.split('_')[2:4]
+                if DEBUG:
+                    print("x_Y")
+                    print(x_y)
                 x = int(x_y[0])
                 y = int(x_y[1].split(".")[0])
-                print(x,y)
+                if DEBUG:
+                    print(x,y)
 
 
                 mpv_command = [
                     "mpv",
-                    filename,
+                    full_path,
                     #"--no-audio",  # Mute audio
                     #"--autofit=1920x1080",  # Adjust to your desired video dimensions
                     "--autofit=640x360", #1920x1080",  # Adjust to your desired video dimensions
@@ -52,8 +48,9 @@ class VideoPlayer():
                     "--no-input-default-bindings",  # Disable default input bindings
                     "--no-border"  # Hide the video outline
                 ]
-                print("\n")
-                print("\n")
+                if DEBUG:
+                    print("\n")
+                    print("\n")
                 mpv_process = subprocess.Popen(mpv_command, stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 
                 video_processes.append(mpv_process)
