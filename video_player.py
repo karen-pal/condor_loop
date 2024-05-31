@@ -6,10 +6,25 @@ from threading import Timer
 import time
 
 DEBUG=False
+BUG=False
 
 class VideoPlayer():
-    def __init__(self, *, video_collage ) : #directory_path="./", videofile_pattern="crop_", video_format=".mp4"):
+    def __init__(self, *, video_collage ):
         self.video_collage = video_collage
+
+    def get_coordinates(self, video_file):
+        """ 
+        expects a video path str that looks like crop_123_4567.mp4
+        """
+        x_y = video_file.split('_')[2:4]
+        if DEBUG:
+            print("x_Y")
+            print(x_y)
+        x = int(x_y[0])
+        y = int(x_y[1].split(".")[0])
+        if DEBUG:
+            print(x,y)
+        return x,y
 
     def play(self):
         video_processes = []
@@ -22,18 +37,16 @@ class VideoPlayer():
             screen_width, screen_height = pyautogui.size()
             print(self.video_collage.video_files)
             for i,video_file in enumerate(self.video_collage.video_files):
-                full_path = os.path.join(self.video_collage.directory_path, video_file)
+                if self.video_collage.mix == True:
+                    if i < len(self.video_collage.video_files)//2:
+                        full_path = os.path.join(self.video_collage.directory_path[0], video_file)
+                    else:
+                        full_path = os.path.join(self.video_collage.directory_path[1], video_file)
+                else:
+                    full_path = os.path.join(self.video_collage.directory_path, video_file)
+                x,y = self.get_coordinates(video_file)
+
                 print(full_path)
-                x_y = video_file.split('_')[2:4]
-                if DEBUG:
-                    print("x_Y")
-                    print(x_y)
-                x = int(x_y[0])
-                y = int(x_y[1].split(".")[0])
-                if DEBUG:
-                    print(x,y)
-
-
                 mpv_command = [
                     "mpv",
                     full_path,
@@ -54,7 +67,7 @@ class VideoPlayer():
                 mpv_process = subprocess.Popen(mpv_command, stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 
                 video_processes.append(mpv_process)
-                if DEBUG:
+                if BUG:
                     if i > 2:
                         break
                     return
