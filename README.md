@@ -6,12 +6,14 @@ Laura, Say hello to my little video looper
 
 Made with AMOR using python, by Karen Palacio.
 
+> For a very custom type of video.
+
 # Contents
 
-- workflow to generate with img2video using ComfyUI 
+- workflow to generate img2video using ComfyUI 
 - other_play.py : quick PoC script version of the sequencer
-- sequencer.py : sequencer WIP
-- video_player: video player class that uses mpv
+- sequencer.py : sequencer WIP - meant to run for a collection of videos
+- video_player: video player class that uses mpv - meant for a single video
 
 # Dependencies
 pip install mpv-python pyautogui
