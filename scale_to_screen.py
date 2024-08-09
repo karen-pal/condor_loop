@@ -3,14 +3,14 @@ import shutil
 from PIL import Image
 
 # Variables a configurar
-original_image_path = '/home/frontera/Documents/Projects/condor_loop/corridor.jpg'  # Ruta del archivo de la imagen original
+original_image_path = '/home/frontera/Documents/Projects/condor_loop/cuba2.jpg'  # Ruta del archivo de la imagen original
 # Abrir la imagen original y obtener su tamaño
 with Image.open(original_image_path) as img:
     original_video_size = img.size  # Tamaño del video original (ancho, alto)
 print(original_video_size)
 screen_size = (1920, 1080)  # Tamaño de la pantalla (ancho, alto)
-crop_folder = '/home/frontera/Documents/Projects/condor_loop/sensorialis/IMG_20240731_144527495/videos'  # Carpeta que contiene los recortes de video
-scaled_folder = '/home/frontera/Documents/Projects/condor_loop/sensorialis/IMG_20240731_144527495/scaled_video_crops'  # Carpeta para guardar los recortes de video con nombres actualizados
+crop_folder = '/home/frontera/Documents/Projects/condor_loop/sensorialis/cuba2/videos'  # Carpeta que contiene los recortes de video
+scaled_folder = '/home/frontera/Documents/Projects/condor_loop/sensorialis/cuba2/scaled_video_crops'  # Carpeta para guardar los recortes de video con nombres actualizados
 
 # Crear la carpeta para los recortes con nombres actualizados si no existe
 os.makedirs(scaled_folder, exist_ok=True)

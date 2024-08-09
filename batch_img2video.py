@@ -5,7 +5,7 @@ from tqdm import tqdm
 import requests
 
 # Define the API endpoint
-api_url = 'http://127.0.0.1:7864/prompt'  # Replace with the actual endpoint
+api_url = 'http://127.0.0.1:7866/prompt'  # Replace with the actual endpoint
 
 # Paths to the directories and the workflow file
 input_dir = 'input_images'
@@ -47,6 +47,7 @@ for image_name in tqdm(image_files, desc="Processing images"):
         files = {'file': image_file}
         data = {'workflow': json.dumps(workflow)}  # Convert workflow to JSON string
         prompt["23"]["inputs"]["image"] = image_file.name
+        prompt["24"]["inputs"]["filename_prefix"] = image_name.split(".")[0]
 
         response = queue_prompt(prompt)
         
@@ -55,5 +56,5 @@ for image_name in tqdm(image_files, desc="Processing images"):
         else:
             print(f'Failed to process: {image_name}, Status Code: {response.status_code}')
 
-print('Batch processing complete.')
+print('Batch processing complete for jarra corridor2 coleccionmalvinas2 biblio.')
 

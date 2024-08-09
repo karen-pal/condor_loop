@@ -67,6 +67,9 @@ class VideoPlayer():
                 mpv_process = subprocess.Popen(mpv_command, stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 
                 video_processes.append(mpv_process)
+                #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                #time.sleep(2)
+                #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 if BUG:
                     if i > 2:
                         break
