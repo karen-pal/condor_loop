@@ -2,7 +2,7 @@ from video_player import VideoPlayer
 from video_collage import VideoCollage
 from time import sleep
 
-
+# racimos
 corridor = "/home/frontera/Documents/Projects/condor_loop/sensorialis/corridor/scaled_video_crops"
 malvinas ="/home/frontera/Documents/Projects/condor_loop/sensorialis/malvinas_127/scaled_video_crops"
 coleccion_malvinas ="/home/frontera/Documents/Projects/condor_loop/sensorialis/coleccion_malvinas2/scaled_video_crops"
@@ -25,6 +25,46 @@ sueñaw = "/home/frontera/Documents/Projects/condor_loop/sensorialis/sueña_w/vi
 corridor2 = "/home/frontera/Documents/Projects/condor_loop/sensorialis/corridor2/scaled_video_crops"
 cba1 = "/home/frontera/Documents/Projects/condor_loop/sensorialis/cba1/scaled_video_crops"
 cba4 = "/home/frontera/Documents/Projects/condor_loop/sensorialis/cba4/scaled_video_crops"
+
+
+#colecciones
+## malvinas
+malvinas = {
+        0:sueñaw,
+        1:malvinas,
+        2:coleccion_mavinas,
+        3:coleccion_malvinas2,
+        5:laura2,
+        6:reconstruccion,
+        7:laura,
+        8:sueña,
+        }
+
+full_data={
+           0:corridor, 
+           1:malvinas,
+           2:coleccion_malvinas,
+           3:coleccion_malvinas2,
+           4:jarra,
+           5:reconstruccion,
+           6:laura,
+           7:biblio,
+           8:laura2,
+           9:paisaje,
+           10:tronco,
+           11:blanco,
+           12:cuba,
+           13:cuba2,
+           14:fosil,
+           15:fosil2,
+           16:mostrar,
+           17:sueña,
+           18:sueñaw,
+           19:corridor2,
+           20:cba1,
+           21:cba4,
+           }
+
 class Sequence():
     """ given slots and a pattern
     of a certain length, you program
@@ -57,7 +97,6 @@ class Sequence():
                 19:corridor2,
                 20:cba1,
                 21:cba4,
-
                 }
         self.mix_config = {
                         0:[],
@@ -70,7 +109,19 @@ class Sequence():
                         7:[],
                         8:[],
                         9:[],
-                        }  
+                        10:[],
+                        11:[],
+                        12:[],
+                        13:[],
+                        14:[],
+                        15:[],
+                        16:[],
+                        17:[],
+                        18:[],
+                        19:[],
+                        20:[],
+                        21:[],
+                        }
 
     def validate_mix_config(self):
         """ 
