@@ -65,6 +65,7 @@ h1 {
     h1{
 	line-height: 15vw;
  line-height: 70%; 
+ font-size:7vw; --nuevo
  }
 #sun {
     position:absolute;
@@ -89,3 +90,17 @@ html{position:absolute;
   display: block;
   text-align: center;
 }
+.video-responsive{
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.video-responsive iframe{
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}
+ 
