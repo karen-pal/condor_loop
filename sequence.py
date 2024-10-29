@@ -29,10 +29,10 @@ cba4 = "/home/frontera/Documents/Projects/condor_loop/sensorialis/cba4/scaled_vi
 
 #colecciones
 ## malvinas
-malvinas = {
+malvinas_collection = {
         0:sueñaw,
         1:malvinas,
-        2:coleccion_mavinas,
+        2:coleccion_malvinas,
         3:coleccion_malvinas2,
         5:laura2,
         6:reconstruccion,
@@ -71,33 +71,10 @@ class Sequence():
     a sequence of videos to be played
     in that order
     """
-    def __init__(self, ):
+    def __init__(self ):
         self.pattern = "*"*22 #"01~~45678"
         #self.data = {0:"./videos/videos_frame_2136",1:"./videos/videos_frame_2184",2:"./videos/videos_frame_2232"}
-        self.data = {
-                0:corridor, 
-                1:malvinas,
-                2:coleccion_malvinas,
-                3:coleccion_malvinas2,
-                4:jarra,
-                5:reconstruccion,
-                6:laura,
-                7:biblio,
-                8:laura2,
-                9:paisaje,
-                10:tronco,
-                11:blanco,
-                12:cuba,
-                13:cuba2,
-                14:fosil,
-                15:fosil2,
-                16:mostrar,
-                17:sueña,
-                18:sueñaw,
-                19:corridor2,
-                20:cba1,
-                21:cba4,
-                }
+        self.data = full_data
         self.mix_config = {
                         0:[],
                         1:[],
@@ -136,6 +113,7 @@ class Sequence():
             return
         while True:
             for i,val in enumerate(self.pattern):
+
                 print(i,val)
                 if val == "-":
                     print("- no play")
@@ -154,7 +132,7 @@ class Sequence():
                     print(">>>*single play")
                     collage = VideoCollage(directory_path=self.data[i])
                     VideoPlayer(video_collage=collage).play()
-                    sleep(2)
+                    sleep(1)
             
 #eventualmente en tiempo de ejecución mix() será una operación en caliente y no de config
 seq = Sequence()
